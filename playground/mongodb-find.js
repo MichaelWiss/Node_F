@@ -9,7 +9,9 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, db)=> {
    }
    console.log('Connected to MongoDB server');
 
-    db.collection('Todos').find().toArray().then((docs) => {
+    db.collection('Todos').find({
+       _id: new ObjectID('58938465a5cced4ada5bbefc')
+       }).toArray().then((docs) => {
        console.log('Todos');
        console.log(JSON.stringify(docs, undefined, 2));
    }, (err) => {
@@ -17,5 +19,5 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, db)=> {
    })
 
    
-   db.close();
+   // db.close();
 });
