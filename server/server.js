@@ -1,21 +1,8 @@
 var {mongoose} = require('/db/mongoose');
+var {Todo} = requier('./models/todo');
+var {User} = require('./models/user');
 
-var Todo = mongoose.model('Todo', {
-	text: {
-       type: String,
-       required: true,
-       minlength: 1,
-       trim: true
-	},
-	completed: {
-		type: Boolean,
-		default: false
-	},
-	completedAt: {
-        type: Number,
-        default: null
-	}
-});
+
 
 // var newTodo = new Todo({
 // 	text: 'Cook dinner'
@@ -27,35 +14,28 @@ var Todo = mongoose.model('Todo', {
 // 	console.log('Unable to save todo')
 // });
 
-var newTodo = new Todo({
-	text: 'Work out',
-	completed: false,
-	completedAt: 0.00,
-});
+// var newTodo = new Todo({
+// 	text: 'Work out',
+// 	completed: false,
+// 	completedAt: 0.00,
+// });
 
-newTodo.save().then((doc) => {
-   console.log('Saved todo', doc);
-}, (e) => {
-	console.log('Unable to save todo')
-});
+// newTodo.save().then((doc) => {
+//    console.log('Saved todo', doc);
+// }, (e) => {
+// 	console.log('Unable to save todo')
+// });
 
-var User = mongoose.model('User', {
-	email: {
-		type: String,
-		required: true,
-		minlength: 1,
-		trim: true,
-	}
-});
 
-var newUser = new User({
-	email: 'text@gmail.com',
+
+// var newUser = new User({
+// 	email: 'text@gmail.com',
    
-});
+// });
 
 
-newUser.save().then((doc) => {
-   console.log('Saved User', doc);
-}, (e) => {
-	console.log('Unable to save User')
-});
+// newUser.save().then((doc) => {
+//    console.log('Saved User', doc);
+// }, (e) => {
+// 	console.log('Unable to save User')
+// });
