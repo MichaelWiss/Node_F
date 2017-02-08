@@ -3,18 +3,21 @@ const {Todo} = require('./../server/models/todo');
 
 var id = '589a7679dbff071d2f4947ff';
 
-Todo.find({
-	_id: id
-}).then((todos) => {
-  console.log('Todos', todos);
-});
+// Todo.find({
+// 	_id: id
+// }).then((todos) => {
+//   console.log('Todos', todos);
+// });
 
-Todo.findOne({
-	_id: id
-}).then((todo) => {
-  console.log('Todo', todo);
-});
+// Todo.findOne({
+// 	_id: id
+// }).then((todo) => {
+//   console.log('Todo', todo);
+// });
 
 Todo.findById(id).then((todo) => {
+	if (!todo) {
+		return console.log('Id not found');
+	}
   console.log('Todo By Id', todo);
-});
+}).catch((e) => console.log(e));
