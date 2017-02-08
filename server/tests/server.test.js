@@ -1,10 +1,12 @@
 const expect = require('expect');
 const request = require('supertest');
+const {ObjectID} = require('mongodb');
 
 const {app} = require('./../server');
 const {Todo} = require('./../models/todo');
 
 const todos = [{
+	_id
 	text: 'First test todo'
 }, {
     text: 'Second test todo'
@@ -65,5 +67,11 @@ describe('Get /todos', () => {
         	expect(res.body.todos.length).toBe(2);
         })
         .end(done);
+	});
+});
+
+describe('GET /todos/:id', () => {
+	it('should return todo doc', (done) => {
+
 	});
 });
