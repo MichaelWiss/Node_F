@@ -39,11 +39,12 @@ app.get('/todos/:id', (req, res) => {
 
     Todo.findById(id).then((todo) => {
 	if (!todo) {
-		return console.log('Id not found');
+		return res.status(404).send();
 	}
-
-	  console.log('Todo By Id', todo);
-	}).catch((e) => console.log(e));
+	res.send({todo});
+	}).catch((e) => {
+		res.status(400).send();
+  });
 });
 
 
