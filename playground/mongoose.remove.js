@@ -11,9 +11,9 @@ const {User} = require('./../server/models/user');
 
 // Todo.findOneAndRemove
 // Todo.findByIdAndRemove 
-Todo.findOneANdRemove({_id: '589cbeea449b706427bd88ae'}).then((todo) => {
-	;
-})
+// Todo.findOneANdRemove({_id: '589cbeea449b706427bd88ae'}).then((todo) => {
+// 	;
+// })
 
 Todo.findByIdAndRemove('589cbeea449b706427bd88ae').then((todo) => {
      console.log(todo);
