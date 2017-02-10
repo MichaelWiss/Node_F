@@ -65,6 +65,11 @@ Todo.findByIdAndRemove(id).then((todo) => {
   });
 });
 
+app.patch('/todos/:id', (req, res) => {
+   var id = req.params.id;
+   var body = _.pick
+});
+
 
 
 app.listen(port, () => {
