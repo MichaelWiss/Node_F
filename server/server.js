@@ -67,7 +67,17 @@ Todo.findByIdAndRemove(id).then((todo) => {
 
 app.patch('/todos/:id', (req, res) => {
    var id = req.params.id;
-   var body = _.pick
+   var body = _.pick(req.body, ['text', 'completed']);
+
+    if (!ObjectID.isValid(id)) {
+       return res.status(404).send();
+    }
+
+    if (_.isBoolean(body.completed) && body.completed) {
+      body.completedAt = new Date().getTime();
+    } else {
+
+    }
 });
 
 
