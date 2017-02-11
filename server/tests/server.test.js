@@ -10,7 +10,9 @@ const todos = [{
 	text: 'First test todo'
 }, {
 	_id: new ObjectID(),
-    text: 'Second test todo'
+    text: 'Second test todo',
+    completed: true,
+    completedAt: 333
 }];
 
 beforeEach((done) => {
@@ -132,4 +134,10 @@ describe('Delete /todos/:id', () => {
            .end(done);
 
     });
+});
+
+describe('PATCH /todos/:id', () => {
+	it('should update the todo', (done) => {
+
+	});
 });
