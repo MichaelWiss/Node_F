@@ -140,4 +140,8 @@ describe('PATCH /todos/:id', () => {
 	it('should update the todo', (done) => {
 
 	});
+
+	it('should clear completedAt when todo is not completed', (done) => {
+
+	});
 });
