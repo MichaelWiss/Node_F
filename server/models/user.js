@@ -16,7 +16,7 @@ var User = mongoose.model('User', {
 	    }
      },
     password: {
-	   	 type: String.
+	   	 type: String,
 	   	 require: true,
 	   	 minlength: 6
    },

@@ -95,6 +95,38 @@ app.patch('/todos/:id', (req, res) => {
 
 
 
+// app.post('/todos', (req, res) => {
+//     var todo = new Todo({
+//       text: req.body.text
+//     });
+
+//     todo.save().then((doc) => {
+//        res.send(doc);
+//     }, (e) => {
+//        res.status(400).send(e);
+//     });
+// });
+
+
+app.post('/users', (req, res) => {
+   var user = new User({
+      email: req.body.email,
+      password: req.body.password
+   });
+    user.save().then((doc) => {
+    res.send(doc);
+  }, (e) => {
+      res.status(400).send(e);
+   });
+
+});
+
+
+
+
+
+
+
 app.listen(port, () => {
 	console.log(`Started up at port ${port}`);
 });
