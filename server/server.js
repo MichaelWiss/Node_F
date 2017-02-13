@@ -128,8 +128,15 @@ app.post('/users', (req, res) => {
 
 });
 
+//private route
+
+app.get('/users/me', (req, res) => {
+  var token = req.header('x-auth');
+
+  User.findByToken(token)
 
 
+});
 
 
 
