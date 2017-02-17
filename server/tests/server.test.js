@@ -4,6 +4,7 @@ const {ObjectID} = require('mongodb');
 
 const {app} = require('./../server');
 const {Todo} = require('./../models/todo');
+const {User} = require('./../models/user');
 const {todos, populateTodos, users, populateUsers} = require('./seed/seed');
 
 beforeEach(populateUsers);
@@ -206,12 +207,18 @@ describe('Post /users', () => {
           expect(res.body._id).toExist();
           expect(res.body.email).toBe(email);
         })
-         .end(err) => {
+         .end((err) => {
           if (err) {
-            ;
-         
+           return done(err);
+          }
 
-   });
+          User.findOne({email}).then((user) => {
+            expect(user).toExist();
+            expect(user.password).toNotBe(password);
+            done();
+          });
+        });  
+     });
 
    it('should return validation errors if request invalid', (done) => {
     request(app)
