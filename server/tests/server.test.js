@@ -243,4 +243,25 @@ describe('Post /users', () => {
    });
 });
 
+describe('POST /users/login', () => {
+  it('should login user and return auth token', (done) => {
+     request(app)
+     .post('users/login')
+     .send({
+      email: users[1].email,
+      password: users[1].password
+     })
+     .expect(200)
+     .expect((res) => {
+       expect(res.headers[''])
+     })
+  });
+
+  it('should reject invalid login', (done) => {
+
+  });
+});
+
+
+
 
