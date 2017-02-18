@@ -218,8 +218,8 @@ describe('Post /users', () => {
             done();
           }).catch((e) => done(e));
      });
-        });  
-     });
+  });  
+   
 
    it('should return validation errors if request invalid', (done) => {
     request(app)
@@ -246,8 +246,8 @@ describe('Post /users', () => {
 
 describe('POST /users/login', () => {
   it('should login user and return auth token', (done) => {
-     request(app)
-     .post('users/login')
+    request(app)
+     .post('/users/login')
      .send({
       email: users[1].email,
       password: users[1].password
@@ -257,7 +257,7 @@ describe('POST /users/login', () => {
        expect(res.headers['x-auth']).toExist();
      })
      .end((err, res) => {
-      if(err) {
+      if (err) {
         return done(err);
       }
 
