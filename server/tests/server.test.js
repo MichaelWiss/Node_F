@@ -303,6 +303,7 @@ describe('Delete /users/me/token', () => {
          .set('x-auth', users[0].tokens[0].token)
          .expect(200)
          .end((err, res) => {
+          if (err) {
              return done(err);
           }
 
