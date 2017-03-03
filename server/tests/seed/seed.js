@@ -28,7 +28,7 @@ const todos = [{
     text: 'Second test todo',
     completed: true,
     completedAt: 333,
-    _creator:userTwoId
+    _creator: userTwoId
 }];
 
 const populateTodos = (done) => {
