@@ -66,7 +66,10 @@ app.delete('/todos/:id', authenticate, (req, res) => {
   return res.status(404).send();
     }
 
-Todo.findByIdAndRemove(id).then((todo) => {
+Todo.findOneAndRemove({
+  _id: id,
+  _creator: req.user._id
+}).then((todo) => {
      if (!todo) {
       return res.status(404).send();
   }

@@ -108,6 +108,7 @@ describe('Delete /todos/:id', () => {
        var hexId= todos[1]._id.toHexString();
 
        request(app)
+       .set('x-auth', users[1].tokens[0].token)
        .delete(`/todos/${hexId}`)
        .expect(200)
        .expect((res) => {
