@@ -106,28 +106,48 @@ describe('GET /todos/:id', () => {
 describe('Delete /todos/:id', () => {
     it('should remove a todo', (done) => {
        var hexId= todos[1]._id.toHexString();
-
        request(app)
-       .set('x-auth', users[1].tokens[0].token)
-       .delete(`/todos/${hexId}`)
-       .expect(200)
-       .expect((res) => {
-         expect(res.body.todo._id).toBe(hexId);
-       })
-       .end((err, res) => {
-         if (err) {
-         	return done(err);
-         }
-         Todo.findById(hexId).then((todo) => {
-         	expect(todo).toNotExist();
-         	done();
-         }).catch((e) => done(e));
+         .delete(`/todos/${hexId}`)
+         .set('x-auth', users[1].tokens[0].token)
+         .expect(200)
+         .expect((res) => {
+           expect(res.body.todo._id).toBe(hexId);
+         })
+         .end((err, res) => {
+           if (err) {
+           	return done(err);
+           }
+           Todo.findById(hexId).then((todo) => {
+           	expect(todo).toNotExist();
+           	done();
+           }).catch((e) => done(e));
        });
     });
+
+     it('should remove a todo', (done) => {
+       var hexId= todos[0]._id.toHexString();
+
+       request(app)
+         .delete(`/todos/${hexId}`)
+         .set('x-auth', users[1].tokens[0].token)
+         .expect(404)
+         .end((err, res) => {
+           if (err) {
+            return done(err);
+           }
+           Todo.findById(hexId).then((todo) => {
+            expect(todo).toExist();
+            done();
+           }).catch((e) => done(e));
+       });
+    });
+
+
    it('should return a 404 if todo not found', (done)=> {
     var hexId = new ObjectID().toHexString();
 	       request(app)
 		       .delete(`/todos/${hexId}`)
+           .set('x-auth', users[1].tokens[0].token)
 		       .expect(404)
 		       .end(done);
       
@@ -135,6 +155,7 @@ describe('Delete /todos/:id', () => {
    it('should return 404 if object id is invalid', (done)=> {
     	   request(app)
            .delete('/todos/123abc')
+           .set('x-auth', users[1].tokens[0].token)
            .expect(404)
            .end(done);
 
